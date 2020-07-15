@@ -41,6 +41,5 @@ public class CityController {
 		cityService.requestReservation(cityName, level, email);
 		return "request_reservation";
 	}
-
 	
 }
