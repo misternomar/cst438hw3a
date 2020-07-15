@@ -48,10 +48,14 @@ public class CityService {
 			return null;
 		City cityC = cities.get(0);
 		Country country = countryRepository.findByCode(cityC.getCountryCode());
+
+		// Temperature Calculation
 		TempAndTime tempTime = weatherService.getTempAndTime(cityName); 
 		double fahrenheit = (tempTime.temp - 273.15) * 9.0/5.0 + 32.0;
 		BigDecimal bd = new BigDecimal(fahrenheit).setScale(2, RoundingMode.HALF_UP);
 		fahrenheit = bd.doubleValue();
+
+		// Time Calculation
 		long timeZone = tempTime.timezone * 1000;
 		long now = System.currentTimeMillis();
 		SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
@@ -61,11 +65,7 @@ public class CityService {
 		Date date = new Date(now);
 		String  formattedDate  =  sdf.format(date);
 		CityInfo cityInfo = new CityInfo(cityC, country.getName(), fahrenheit, formattedDate);
-		/**cityInfo.setName(city.getName());
-		cityInfo.setCountryCode(city.getCountryCode());
-		cityInfo.setCountryName(country.getName());
-		cityInfo.setDistrict(city.getDistrict());
-		cityInfo.setPopulation(city.getPopulation());**/
+
 		cityInfo.setTemp(fahrenheit);
 		cityInfo.setTime(formattedDate);
 		
