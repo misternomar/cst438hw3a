@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Reservation Confirmation</title>
+	<style>
+	.content {
+		max-width: 500px;
+		margin: auto;
+		padding: 25px;
+		background-color: #D3D3D3;
+		font-family: "Times New Roman", Times, serif;
+	}
+	</style>
+</head>
+<body>
+	<div class ="content">
+		<p>The details of your weekend get away at the <span th:text="${level}"></span> level to 
+		<span th:text="${city}"></span> are being emailed to <span th:text="${email}"></span></p>
+	</div>
+</body>
+</html>

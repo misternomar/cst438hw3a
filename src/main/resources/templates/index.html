@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Display City Info</title>
+	<style>
+	.content {
+		max-width: 500px;
+		margin: auto;
+		padding: 25px;
+		background-color: #D3D3D3;
+		font-family: "Times New Roman", Times, serif;
+	}
+	</style>
+</head>
+<body>
+	<div class ="content">
+		<h2>City</h2>
+		<table>
+			<tr>
+				<td>ID</td>
+				<td th:inline="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[${city.id}]]</td>
+			</tr>
+			<tr>
+				<td>Name</td>
+				<td th:inline="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[${city.name}]]</td>
+			</tr>
+			<tr>
+				<td>Country Code</td>
+				<td th:inline="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[${city.countryCode}]]</td>
+			</tr>	
+			<tr>
+				<td>Country Name</td>
+				<td th:inline="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[${city.countryName}]]</td>
+			</tr>
+			<tr>
+				<td>District</td>
+				<td th:inline="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[${city.district}]]</td>
+			</tr>
+			<tr>
+				<td>Population</td>
+				<td th:inline="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[${city.population}]]</td>
+			</tr>
+			<tr>
+				<td>Local Weather</td>
+				<td th:inline="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[${city.temp}]] &#176F</td>
+			</tr>	
+			<tr>
+				<td>Local Time</td>
+				<td th:inline="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[${city.time}]]</td>
+			</tr>
+		</table>
+		<br />
+		<form action="#" th:action="@{/cities/reservation}" method="post">
+			<p th:inline="text">For a fabulous weekend get away for 2 to [[${city.name}]] sign up here.</p>
+			<input type="hidden" id="city" name="city" th:value="${city.name}">
+			Email <input type="email" id="email" name="email"/><br /><br />
+			<input type="radio" id="luxury" name="level" value="Luxury"> Luxury $1000 <br />			
+			<input type="radio" id="intermediate" name="level" value="Intermediate"> Intermediate $500 <br />
+			<input type="radio" id="economy" name="level" value="Economy"> Economy $350 <br /><br />
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+</body>
+</html>
